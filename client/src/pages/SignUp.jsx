@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useState } from 'react';
 
@@ -6,6 +6,7 @@ export default function SignUp() {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({})
+    const navigate = useNavigate()
     const handleChange = (e) => {
 
         // keep the previous value
@@ -30,6 +31,7 @@ export default function SignUp() {
                 setError(data.error)
                 return
             }
+            navigate('/sign-in')
 
         } catch (error) {
             setLoading(false)
@@ -72,7 +74,7 @@ export default function SignUp() {
             <div className='flex gap-2 mt-5'>
                 <p>Already having an account?</p>
                 <Link to='/sign-in'>
-                    <span className='text-blue-600 font-semibold'>Sign in</span>
+                    <span className='text-blue-600 font-semibold'>Sign In</span>
                 </Link>
             </div>
             {error && <p className='text-red-500 mt-5'>{error}</p>}
