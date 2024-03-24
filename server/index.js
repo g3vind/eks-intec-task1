@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 dotenv.config()
 import userRoutes from "./routes/user.route.js"
 import authRoutes from "./routes/auth.route.js"
+import path from "path"
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -15,7 +16,16 @@ mongoose
     console.log("ERROR IN CONNECTING TO DB")
   })
 
+const __dirname = path.resolve()
+
 const app = express()
+
+app.use(express.static(path.join(__dirname, "/client/dist")))
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
+})
+
 app.use(express.json())
 app.use(cookieParser())
 const PORT = 5000
