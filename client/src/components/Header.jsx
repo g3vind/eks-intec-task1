@@ -7,7 +7,7 @@ export default function Header() {
     <div className="bg-slate-200">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
-          <h1 className="font-bold">Auth App</h1>
+          <h1 className="font-bold">EKS INTEC</h1>
         </Link>
         <ul className="flex gap-4 ">
           <Link to="/">
@@ -21,7 +21,7 @@ export default function Header() {
               <img
                 src={currentUser.profilePicture}
                 alt={currentUser.name}
-                className="h-8 w-8 rounded-full object-cover"
+                className="h-8 w-8 rounded-full object-cover shadow-lg"
               />
             ) : (
               <li>Sign In</li>
